@@ -23,3 +23,9 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+Route::post('/checkout', function () {
+    return view('checkout');
+});
