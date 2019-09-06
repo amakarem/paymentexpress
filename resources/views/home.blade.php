@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <br><b>Your payment Key is: </b><kbd><?php echo base64_encode(Auth::user()->email) ?></kbd>
                 </div>
             </div>
         </div>
