@@ -26,8 +26,7 @@ Installation
 7. Install npm required dependencies `npm install`;
 8. Update database: `php artisan migrate`;
 9. Activate Admin Panel `php artisan db:seed --class=VoyagerDatabaseSeeder `;
-10. Install npm required dependencies `npm install`;
-11. Check if everything's up by visiting your page in the web browser, and you are done!
+10. Check if everything's up by visiting your page in the web browser, and you are done!
 
 
 Admin Panel Access
