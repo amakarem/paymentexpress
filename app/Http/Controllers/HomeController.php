@@ -30,6 +30,12 @@ class HomeController extends Controller
     {
         return view('getways');
     }
+    public function generatepaymentkey()
+    {
+        $newkey['paymentkey'] = base64_encode(Auth::user()->email . time());
+        DB::table('users')->where('id', Auth::user()->id)->where('paymentkey', '0')->update($newkey);
+        return redirect('home');
+    }
     public function getwaysetup()
     {
         if (isset($_POST['getway'])) {

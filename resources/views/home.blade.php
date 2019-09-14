@@ -15,7 +15,16 @@
                     @endif
 
                     You are logged in!
-                    <br><b>Your payment Key is: </b><kbd><?php echo base64_encode(Auth::user()->email) ?></kbd>
+                    <br>
+                    <?php
+                    $paymentkey = Auth::user()->paymentkey;
+                        if ($paymentkey == '' || $paymentkey == '0') {
+                            echo "<br><b>You don't have Payment Key </b>";
+                            echo '<a class="btn btn-success" href="' . route('generatepaymentkey') . '">Generate Payment Key</a>';
+                        } else {
+                            echo "<b>Your payment Key is: </b><kbd>$paymentkey</kbd>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>

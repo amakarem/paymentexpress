@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/getways', 'HomeController@getways')->name('getways');
 Route::post('/getwaysetup', 'HomeController@getwaysetup')->name('getwaysetup');
+Route::get('/generatepaymentkey', 'HomeController@generatepaymentkey')->name('generatepaymentkey');
 Route::get('/checkout', function () {
     return view('checkout');
 });

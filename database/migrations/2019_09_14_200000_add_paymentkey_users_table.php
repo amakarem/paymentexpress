@@ -16,7 +16,7 @@ class AddPaymentkeyUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('paymentkey')->default(0);
         });
-        DB::statement("ALTER TABLE users MODIFY paymentkey varchar(30) AFTER email");
+        DB::statement("ALTER TABLE users MODIFY paymentkey varchar(255) AFTER email");
     }
 
     /**
