@@ -27,15 +27,19 @@ foreach ($getwaylist as $getway) {
     if (!empty($result)) {
         foreach ($result as $row) {
             $data[$getway] = $row;
-            $getwaysaccount = $row['email'];
+            if(isset($row['email'])) {
+                $getwaysaccount = $row['email'];
+            } else {
+                $getwaysaccount = $row['merchantId'];
+            }
             $status = $row['sandbox'];
-            if($row['disabled'] == 1) {
+            if ($row['disabled'] == 1) {
                 $status = 2;
             }
         }
-        if($status == 1) {
+        if ($status == 1) {
             $status = 'Sandbox';
-        } elseif($status == 2) {
+        } elseif ($status == 2) {
             $status = 'Disabled';
         } else {
             $status = 'Active';
@@ -59,5 +63,7 @@ foreach ($getwaylist as $getway) {
         </div>
     </div>
 </div>
-@include('layouts.modals')
+@foreach ($getwaylist as $getwaye)
+     @include('modals.' . $getwaye)
+@endforeach
 @endsection
