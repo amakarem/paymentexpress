@@ -5,7 +5,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Paypal Setting</h4>
       </div>
-      <form action="/action_page.php">
+      <form action="{{ route('getwaysetup') }}" method="POST">
+      {{csrf_field()}}
         <div class="modal-body">
           <div class="form-group">
             <label for="email">Paypal Account Email:</label>
