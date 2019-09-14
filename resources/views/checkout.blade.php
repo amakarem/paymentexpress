@@ -11,8 +11,8 @@ if (!empty($_POST)) {
 }
 if (isset($order['account']) && isset($order['id']) && isset($order['details']) && isset($order['amount'])) {
     $paymentdata = array();
-    $account = base64_decode($order['account']);
-    $users = DB::table('users')->where('email', $account)->get();
+    //$account = base64_decode($order['account']);
+    $users = DB::table('users')->where('paymentkey', $order['account'])->get();
     $users = json_decode(json_encode($users), true);
     if(!empty($users)) {
         foreach ($users as $user) {

@@ -5,11 +5,13 @@ $amazondisabled = '';
 $amazonaccessKey = '';
 $amazonsecretKey = '';
 $amazonclientid = '';
+$amazoncallback = '';
 if (isset($data['amazon'])) {
     $amazonmerchantId = $data['amazon']['merchantId'];
     $amazonaccessKey = $data['amazon']['accessKey'];
     $amazonsecretKey = $data['amazon']['secretKey'];
     $amazonclientid = $data['amazon']['clientid'];
+    $amazoncallback = $data['amazon']['callback'];
     if ($data['amazon']['sandbox'] == 1) {
         $amazonsandbox = 'checked';
     }
@@ -44,6 +46,10 @@ if (isset($data['amazon'])) {
           <div class="form-group">
             <label for="clientid">Client ID:</label>
             <input type="text" class="form-control" id="clientid" placeholder="Enter Client ID" name="clientid" value="{{$amazonclientid}}" required>
+          </div>
+          <div class="form-group">
+            <label for="callback">Callback URL:</label>
+            <input type="url" class="form-control" id="callback" placeholder="Enter Callback URL" name="callback" value="{{$amazoncallback}}">
           </div>
           <div class="checkbox">
             <label><input type="checkbox" {{$amazonsandbox}} name="sandbox"> Sandbox</label>
