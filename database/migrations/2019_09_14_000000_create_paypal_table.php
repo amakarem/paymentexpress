@@ -23,6 +23,7 @@ class CreatepaypalTable extends Migration
             $table->string('certificate')->default(0);
             $table->string('app_id')->default(0);
             $table->string('sandbox', 1)->default(0);
+            $table->string('disabled', 1)->default(0);
             $table->timestamps();
         });
     }
