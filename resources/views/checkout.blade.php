@@ -23,7 +23,7 @@ if (isset($order['account']) && isset($order['id']) && isset($order['details']) 
             echo "<br>Order Details: " . $order['details'];
             echo "<br><b>Total</b>: $" . $order['amount'];
             echo "<hr><br><b>Available Paymet method:</b><br>";
-            $paypal = DB::table('paypal')->where('owner', $user['id'])->get();
+            $paypal = DB::table('paypal')->where('owner', $user['id'])->where('disabled', 0)->get();
             $paypal = json_decode(json_encode($paypal), true);
             if (!empty($paypal)) {
                 $paypalmethod = array(

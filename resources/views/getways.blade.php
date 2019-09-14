@@ -29,9 +29,14 @@ foreach ($getwaylist as $getway) {
             $data[$getway] = $row;
             $getwaysaccount = $row['email'];
             $status = $row['sandbox'];
+            if($row['disabled'] == 1) {
+                $status = 2;
+            }
         }
         if($status == 1) {
             $status = 'Sandbox';
+        } elseif($status == 2) {
+            $status = 'Disabled';
         } else {
             $status = 'Active';
         }

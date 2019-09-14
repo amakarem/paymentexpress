@@ -1,11 +1,15 @@
 <?php
 $paypalsandbox = '';
 $paypalemail = '';
+$paypaldisabled = '';
 if (isset($data['paypal'])) {
     $paypalemail = $data['paypal']['email'];
     if ($data['paypal']['sandbox'] == 1) {
         $paypalsandbox = 'checked';
     }
+    if ($data['paypal']['disabled'] == 1) {
+      $paypaldisabled = 'checked';
+  }
 }
 ?>
 <div id="paypal" class="modal fade" role="dialog">
@@ -25,6 +29,9 @@ if (isset($data['paypal'])) {
           </div>
           <div class="checkbox">
             <label><input type="checkbox" {{$paypalsandbox}} name="sandbox"> Sandbox</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" {{$paypaldisabled}} name="disabled"> Disabled</label>
           </div>
         </div>
         <div class="modal-footer">

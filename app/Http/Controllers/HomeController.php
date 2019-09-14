@@ -41,6 +41,11 @@ class HomeController extends Controller
             } else {
                 $_POST['sandbox'] = 0;
             }
+            if (isset($_POST['disabled'])) {
+                $_POST['disabled'] = 1;
+            } else {
+                $_POST['disabled'] = 0;
+            }
             $_POST['owner'] = Auth::user()->id;
             $key['owner'] = Auth::user()->id;
             DB::table($table)->updateOrInsert($key,$_POST);
