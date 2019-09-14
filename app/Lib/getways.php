@@ -1,0 +1,2 @@
+<?php
+$getwaylist = array('paypal');
