@@ -1,2 +1,2 @@
 <?php
-$getwaylist = array('paypal');
+$getwaylist = array('paypal','amazon');
