@@ -12,27 +12,34 @@ if (!empty($_POST)) {
 if (isset($order['account']) && isset($order['id']) && isset($order['details']) && isset($order['amount'])) {
     $paymentdata = array();
     $account = base64_decode($order['account']);
-    $users = DB::table('users')->where('email', $account)->get()->toArray();
+    $users = DB::table('users')->where('email', $account)->get();
+    $users = json_decode(json_encode($users), true);
     if(!empty($users)) {
         foreach ($users as $user) {
-            $accountname = $user->name;
+            $accountname = $user['name'];
             //echo base64_encode($user->email);
             echo "<br>Order Number: " . $order['id'];
             echo "<br>Seller: " . $accountname;
             echo "<br>Order Details: " . $order['details'];
             echo "<br><b>Total</b>: $" . $order['amount'];
             echo "<hr><br><b>Available Paymet method:</b><br>";
-            $paypal = DB::table('paypal')->where('owner', $user->id)->get()->toArray();
+            $paypal = DB::table('paypal')->where('owner', $user['id'])->get();
+            $paypal = json_decode(json_encode($paypal), true);
             if (!empty($paypal)) {
                 $paypalmethod = array(
-                    'business' => $paypal->email,
+                    'business' => $paypal[0]['email'],
                     'cmd' => '_xclick',
                     'notify_url' => '',
                     'item_name' => $order['details'],
                     'bn' => $order['id'],
                     'amount' => $order['amount'],
                 );
-                echo '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">';
+                if($paypal[0]['sandbox'] != 0 ) {
+                    echo '<span class="bg-warning mt-3 mp-3">Sandbox is Active</span>';
+                    echo '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">';
+                } else {
+                    echo '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">';
+                }
                 foreach ($paypalmethod as $key => $value) {
                     echo '<input type="hidden" name="' . $key . '" value="' . $value . '">';
                 }
