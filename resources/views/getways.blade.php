@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Payment Getways</div>
+                <div class="card-header">My Getways</div>
 
                 <div class="card-body">
                     <table class="table table-hover">
