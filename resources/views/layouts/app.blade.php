@@ -50,6 +50,9 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('paymentlist') }}">Transactions</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('getways') }}">Getways</a>
                             </li>
                             <li class="nav-item dropdown">

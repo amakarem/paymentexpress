@@ -30,6 +30,10 @@ class HomeController extends Controller
     {
         return view('getways');
     }
+    public function paymentlist()
+    {
+        return view('paymentlist');
+    }
     public function generatepaymentkey()
     {
         $newkey['paymentkey'] = base64_encode(Auth::user()->email . time());
