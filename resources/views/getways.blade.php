@@ -12,27 +12,41 @@
                     <thead class="bg-light">
                     <tr>
                     <th>Getway</th>
+                    <th>Account</th>
                     <th>Status</th>
                     <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    require app_path() . '/Lib/getways.php';
-                    foreach ($getwaylist as $getway) {
-                        $getwaystatus = DB::table($getway)->where('owner', Auth::user()->id)->get()->toArray();
-                        if(!empty($getwaystatus)) {
-                            $getwaystatus = $getwaystatus['email'];
-                            $action = '<a href="" class="btn btn-sm btn-success">Edit</a>';
-                            $action .= '<a href="" class="btn btn-sm btn-danger">Delete</a>';
-                        } else {
-                            $getwaystatus = 'Not set';
-                            $action = '<a href="" data-toggle="modal" data-target="#paypal" class="btn btn-sm btn-success">Setup</a>';
-                        }
-                        $getway = ucfirst($getway);
-                        echo "<tr><td>$getway</td><td>$getwaystatus</td><td>$action</td></tr>";
-                    }
-                    ?>
+require app_path() . '/Lib/getways.php';
+$data = array();
+foreach ($getwaylist as $getway) {
+    $result = DB::table($getway)->where('owner', Auth::user()->id)->get();
+    $result = json_decode(json_encode($result), true);
+    if (!empty($result)) {
+        foreach ($result as $row) {
+            $data[$getway] = $row;
+            $getwaysaccount = $row['email'];
+            $status = $row['sandbox'];
+        }
+        if($status == 1) {
+            $status = 'Sandbox';
+        } else {
+            $status = 'Active';
+        }
+        $action = '<a href="" data-toggle="modal" data-target="#' . $getway . '" class="btn btn-sm btn-success">Edit</a> ';
+        //$action .= '<a href="" class="btn btn-sm btn-danger">Delete</a>';
+    } else {
+        $getwaystatus = 'Not set';
+        $getwaysaccount = 'Not set';
+        $status = 'N/A';
+        $action = '<a href="" data-toggle="modal" data-target="#' . $getway . '" class="btn btn-sm btn-success">Setup</a>';
+    }
+    $getway = ucfirst($getway);
+    echo "<tr><td>$getway</td><td>$getwaysaccount</td><td>$status</td><td>$action</td></tr>";
+}
+?>
                     </tbody>
                     </table>
                 </div>

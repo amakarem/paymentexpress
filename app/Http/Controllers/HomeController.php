@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 use DB;
 
@@ -33,13 +32,19 @@ class HomeController extends Controller
     }
     public function getwaysetup()
     {
-            if(isset($_POST['getway'])) {
-                $table = $_POST['getway'];
-                unset($_POST['_token']);
-                unset($_POST['getway']);
-                $_POST['owner'] = Auth::user()->id;
-                DB::table($table)->updateOrInsert($_POST);
+        if (isset($_POST['getway'])) {
+            $table = $_POST['getway'];
+            unset($_POST['_token']);
+            unset($_POST['getway']);
+            if (isset($_POST['sandbox'])) {
+                $_POST['sandbox'] = 1;
+            } else {
+                $_POST['sandbox'] = 0;
             }
+            $_POST['owner'] = Auth::user()->id;
+            $key['owner'] = Auth::user()->id;
+            DB::table($table)->updateOrInsert($key,$_POST);
+        }
         return redirect('getways');
     }
 }
