@@ -18,6 +18,7 @@
                     <br>
                     <?php
                     $paymentkey = Auth::user()->paymentkey;
+                    echo $paymentkey;
                         if ($paymentkey == '' || $paymentkey == '0') {
                             echo "<br><b>You don't have Payment Key </b>";
                             echo '<a class="btn btn-success" href="' . route('generatepaymentkey') . '">Generate Payment Key</a>';
