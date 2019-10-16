@@ -37,7 +37,10 @@ class HomeController extends Controller
     public function generatepaymentkey()
     {
         $newkey['paymentkey'] = base64_encode(Auth::user()->email . time());
-        DB::table('users')->where([['id', '=' ,Auth::user()->id], ['paymentkey', '=', '']])->update($newkey);
+        DB::table('users')
+        ->where([['id', '=' ,Auth::user()->id], ['paymentkey', '=', '']])
+        ->orWhere([['id', '=' ,Auth::user()->id], ['paymentkey', '=', '0']])
+        ->update($newkey);
         return redirect('home');
     }
     public function getwaysetup()
