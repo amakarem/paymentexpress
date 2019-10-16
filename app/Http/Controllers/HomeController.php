@@ -38,9 +38,9 @@ class HomeController extends Controller
     {
         $newkey['paymentkey'] = base64_encode(Auth::user()->email . time());
         DB::table('users')
-        ->where([['id', '=' ,Auth::user()->id], ['paymentkey', '=', '']])
-        ->orWhere([['id', '=' ,Auth::user()->id], ['paymentkey', '=', '0']])
-        ->update($newkey);
+            ->where([['id', '=', Auth::user()->id], ['paymentkey', '=', '']])
+            ->orWhere([['id', '=', Auth::user()->id], ['paymentkey', '=', '0']])
+            ->update($newkey);
         return redirect('home');
     }
     public function getwaysetup()
@@ -61,7 +61,7 @@ class HomeController extends Controller
             }
             $_POST['owner'] = Auth::user()->id;
             $key['owner'] = Auth::user()->id;
-            DB::table($table)->updateOrInsert($key,$_POST);
+            DB::table($table)->updateOrInsert($key, $_POST);
         }
         return redirect('getways');
     }
