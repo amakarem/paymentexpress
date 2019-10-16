@@ -27,7 +27,7 @@ if ($paymentkey == '' || $paymentkey == '0') {
     echo "<hr><b>Here is your simple HTML code for integration</b><br>";
     echo '
 <textarea rows="10" cols="100" name="code">
-<form method="GET" action="https://' . env("APP_URL") . '/checkout">
+<form method="GET" action="' . env("APP_URL") . '/checkout">
     <input type="hidden" name="account" value="' . $paymentkey . '">
     <input type="hidden" name="id" value="2">
     <input type="text" name="details" value="details for the order">
