@@ -16,9 +16,12 @@
 
                     You are logged in!
                     <br>
+                    <pre>
                     <?php
                     $paymentkey = Auth::user()->paymentkey;
                     echo $paymentkey;
+                    $x = DB::table('users')->where('id', Auth::user()->id)->get();
+                    print_r($x);
                         if ($paymentkey == '' || $paymentkey == '0') {
                             echo "<br><b>You don't have Payment Key </b>";
                             echo '<a class="btn btn-success" href="' . route('generatepaymentkey') . '">Generate Payment Key</a>';
