@@ -13,7 +13,7 @@
                     <tr>
                     <th>ID</th>
                     <th>OrderID</th>
-                    <th>Getway</th>
+                    <th>Gateway</th>
                     <th>Transaction ID</th>
                     <th>Amount</th>
                     <th>Status</th>
