@@ -21,12 +21,12 @@ if (isset($data['paypal'])) {
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Paypal Setting</h4>
       </div>
-      <form action="{{ route('getwaysetup') }}" method="POST">
+      <form action="{{ route('gatewaysetup') }}" method="POST">
       {{csrf_field()}}
         <div class="modal-body">
           <div class="form-group">
             <label for="email">Paypal Account Email:</label>
-            <input type="hidden" id="getway" name="getway" value="paypal">
+            <input type="hidden" id="gateway" name="gateway" value="paypal">
             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="{{$paypalemail}}" required>
           </div>
           <div class="form-group">
