@@ -36,7 +36,7 @@ if (isset($data['paypal'])) {
           <div class="checkbox">
             <label><input type="checkbox" {{$paypalsandbox}} name="sandbox"> Sandbox</label>
           </div>
-          <div class="checkbox">
+          <div class="checkbox text-danger">
             <label><input type="checkbox" {{$paypaldisabled}} name="disabled"> Disabled</label>
           </div>
         </div>
