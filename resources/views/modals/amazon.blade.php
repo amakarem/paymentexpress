@@ -54,7 +54,7 @@ if (isset($data['amazon'])) {
           <div class="checkbox">
             <label><input type="checkbox" {{$amazonsandbox}} name="sandbox"> Sandbox</label>
           </div>
-          <div class="checkbox">
+          <div class="checkbox text-danger">
             <label><input type="checkbox" {{$amazondisabled}} name="disabled"> Disabled</label>
           </div>
         </div>
