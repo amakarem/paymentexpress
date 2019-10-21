@@ -23,8 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/getways', 'HomeController@getways')->name('getways');
-Route::post('/getwaysetup', 'HomeController@getwaysetup')->name('getwaysetup');
+Route::get('/gateways', 'HomeController@gateways')->name('gateways');
+Route::post('/gatewaysetup', 'HomeController@gatewaysetup')->name('gatewaysetup');
 Route::get('/generatepaymentkey', 'HomeController@generatepaymentkey')->name('generatepaymentkey');
 Route::get('/paymentlist', 'HomeController@paymentlist')->name('paymentlist');
 Route::get('/checkout', function () {
