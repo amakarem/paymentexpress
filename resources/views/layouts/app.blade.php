@@ -53,7 +53,7 @@
                                 <a class="nav-link" href="{{ route('paymentlist') }}">Transactions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('getways') }}">Getways</a>
+                                <a class="nav-link" href="{{ route('geteways') }}">Geteways</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
