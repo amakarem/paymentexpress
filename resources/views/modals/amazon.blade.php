@@ -27,12 +27,12 @@ if (isset($data['amazon'])) {
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Amazon Setting</h4>
       </div>
-      <form action="{{ route('getwaysetup') }}" method="POST">
+      <form action="{{ route('gatewaysetup') }}" method="POST">
       {{csrf_field()}}
         <div class="modal-body">
           <div class="form-group">
             <label for="merchantId">Amazon SellerID/MerchantID:</label>
-            <input type="hidden" id="getway" name="getway" value="amazon">
+            <input type="hidden" id="gateway" name="gateway" value="amazon">
             <input type="text" class="form-control" id="merchantId" placeholder="Enter MerchantId" name="merchantId" value="{{$amazonmerchantId}}" required>
           </div>
           <div class="form-group">
