@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">My Getways</div>
+                <div class="card-header">My Gateways</div>
 
                 <div class="card-body">
                     <table class="table table-hover">
                     <thead class="bg-light">
                     <tr>
-                    <th>Getway</th>
+                    <th>Gateway</th>
                     <th>Account</th>
                     <th>Status</th>
                     <th></th>
@@ -19,18 +19,18 @@
                     </thead>
                     <tbody>
                     <?php
-require app_path() . '/Lib/getways.php';
+require app_path() . '/Lib/gateways.php';
 $data = array();
-foreach ($getwaylist as $getway) {
-    $result = DB::table($getway)->where('owner', Auth::user()->id)->get();
+foreach ($gatewaylist as $gateway) {
+    $result = DB::table($gateway)->where('owner', Auth::user()->id)->get();
     $result = json_decode(json_encode($result), true);
     if (!empty($result)) {
         foreach ($result as $row) {
-            $data[$getway] = $row;
+            $data[$gateway] = $row;
             if(isset($row['email'])) {
-                $getwaysaccount = $row['email'];
+                $gatewaysaccount = $row['email'];
             } else {
-                $getwaysaccount = $row['merchantId'];
+                $gatewaysaccount = $row['merchantId'];
             }
             $status = $row['sandbox'];
             if ($row['disabled'] == 1) {
@@ -44,16 +44,16 @@ foreach ($getwaylist as $getway) {
         } else {
             $status = 'Active';
         }
-        $action = '<a href="" data-toggle="modal" data-target="#' . $getway . '" class="btn btn-sm btn-success">Edit</a> ';
+        $action = '<a href="" data-toggle="modal" data-target="#' . $gateway . '" class="btn btn-sm btn-success">Edit</a> ';
         //$action .= '<a href="" class="btn btn-sm btn-danger">Delete</a>';
     } else {
-        $getwaystatus = 'Not set';
-        $getwaysaccount = 'Not set';
+        $gatewaystatus = 'Not set';
+        $gatewaysaccount = 'Not set';
         $status = 'N/A';
-        $action = '<a href="" data-toggle="modal" data-target="#' . $getway . '" class="btn btn-sm btn-success">Setup</a>';
+        $action = '<a href="" data-toggle="modal" data-target="#' . $gateway . '" class="btn btn-sm btn-success">Setup</a>';
     }
-    $getway = ucfirst($getway);
-    echo "<tr><td>$getway</td><td>$getwaysaccount</td><td>$status</td><td>$action</td></tr>";
+    $gateway = ucfirst($gateway);
+    echo "<tr><td>$gateway</td><td>$gatewaysaccount</td><td>$status</td><td>$action</td></tr>";
 }
 ?>
                     </tbody>
@@ -63,7 +63,7 @@ foreach ($getwaylist as $getway) {
         </div>
     </div>
 </div>
-@foreach ($getwaylist as $getwaye)
-     @include('modals.' . $getwaye)
+@foreach ($gatewaylist as $gatewaye)
+     @include('modals.' . $gatewaye)
 @endforeach
 @endsection
