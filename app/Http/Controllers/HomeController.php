@@ -43,12 +43,12 @@ class HomeController extends Controller
             ->update($newkey);
         return redirect('home');
     }
-    public function getwaysetup()
+    public function gatewaysetup()
     {
-        if (isset($_POST['getway'])) {
-            $table = $_POST['getway'];
+        if (isset($_POST['gateway'])) {
+            $table = $_POST['gateway'];
             unset($_POST['_token']);
-            unset($_POST['getway']);
+            unset($_POST['gateway']);
             if (isset($_POST['sandbox'])) {
                 $_POST['sandbox'] = 1;
             } else {
@@ -63,6 +63,6 @@ class HomeController extends Controller
             $key['owner'] = Auth::user()->id;
             DB::table($table)->updateOrInsert($key, $_POST);
         }
-        return redirect('getways');
+        return redirect('gateways');
     }
 }
