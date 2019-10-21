@@ -40,6 +40,7 @@ class HomeController extends Controller
         DB::table('users')
             ->where([['id', '=', Auth::user()->id], ['paymentkey', '=', '']])
             ->orWhere([['id', '=', Auth::user()->id], ['paymentkey', '=', '0']])
+            ->orWhere([['id', '=', Auth::user()->id], ['paymentkey', '=', NULL]])
             ->update($newkey);
         return redirect('home');
     }
