@@ -17,7 +17,7 @@ class CreatepaymentTable extends Migration
             $table->bigIncrements('id');
             $table->integer('owner');
             $table->string('orderid')->unique();
-            $table->string('getway');
+            $table->string('gateway');
             $table->string('txnid');
             $table->string('amount');
             $table->string('status');
