@@ -26,9 +26,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function getways()
+    public function gateways()
     {
-        return view('getways');
+        return view('gateways');
     }
     public function paymentlist()
     {
