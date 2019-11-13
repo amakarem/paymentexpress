@@ -11,6 +11,16 @@ $system = 'https://api.paypal.com/v1/';
 if ($sandbox == 1) {
     $system = 'https://api.sandbox.paypal.com/v1/';
 }
+$start = date("Y-m-d",strtotime("-1 month"));
+$end = date("Y-m-d");
+if(isset($_GET['start'])) {
+    $start = $_GET['start'];
+}
+if(isset($_GET['end'])) {
+    $end = $_GET['end'];
+}
+$start = $start . '00:00:00-0000';
+$end = $end . '23:59:59-0000';
 function token($client_id, $secret)
 {
     global $system;
@@ -38,10 +48,10 @@ function token($client_id, $secret)
     return $result;
 }
 
-function gettransactions($token)
+function gettransactions($token,$start,$end)
 {
     global $system;
-    $queryUrl = $system . 'reporting/transactions?start_date=2019-09-01T00:00:00-0700&end_date=2019-09-30T23:59:59-0700&fields=transaction_info,payer_info&page_size=500&page=1';
+    $queryUrl = $system . 'reporting/transactions?start_date='.$start.'&end_date='.$end.'&fields=transaction_info,payer_info&page_size=500&page=1';
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL, $queryUrl);
