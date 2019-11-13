@@ -1,7 +1,10 @@
+<pre>
 <?php
 
 $data = DB::table('paypal')->where('owner', Auth::user()->id)->get();
 $data = json_decode(json_encode($data), true);
+print_r($data);
+/*
 $client_id = $data['username'];
 $secret = $data['password'];
 
@@ -110,3 +113,4 @@ print_r($transactions);
     </div>
 </div>
 @endsection
+*/
