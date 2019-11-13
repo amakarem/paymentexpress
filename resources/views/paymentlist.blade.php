@@ -21,7 +21,6 @@ if(isset($_GET['end'])) {
 }
 $start = $start . 'T00:00:00-0000';
 $end = $end . 'T23:59:59-0000';
-echo $start;
 
 function token($client_id, $secret)
 {
