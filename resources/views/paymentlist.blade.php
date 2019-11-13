@@ -2,8 +2,11 @@
 
 $data = DB::table('paypal')->where('owner', Auth::user()->id)->get();
 $data = json_decode(json_encode($data), true);
+print_r($data);
+/*
 $client_id = $data['paypal']['username'];
 $secret = $data['paypal']['password'];
+
 function token($client_id, $secret)
 {
     global $system;
@@ -72,6 +75,7 @@ foreach ($result as $value) {
     }
 }
 print_r($transactions);
+*/
 ?>
 
 @extends('layouts.app')
