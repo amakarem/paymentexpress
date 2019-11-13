@@ -71,9 +71,9 @@ foreach ($result as $value) {
     if (!isset($value['transaction_info']['paypal_reference_id'])) {
         $payer = $value['payer_info']['email_address'];
         $value = $value['transaction_info'];
-        $transactions[$value['transaction_id']]['ID'] = $value['transaction_id'];
-        $transactions[$value['transaction_id']]['Date'] = $value['transaction_updated_date'];
-        $transactions[$value['transaction_id']]['Currency'] = $value['transaction_amount']['currency_code'];
+        $transactions[$value['transaction_id']]['id'] = $value['transaction_id'];
+        $transactions[$value['transaction_id']]['date'] = $value['transaction_updated_date'];
+        $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
         $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
         $transactions[$value['transaction_id']]['payer'] = $payer;
     }
@@ -105,7 +105,7 @@ print_r($transactions);
                     <tbody>
                     <?php
 foreach ($transactions as $row) {
-    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['value'] . "</td><td>" . $row['Currency'] . "</td><td>" . $row['payer'] . "</td><td>" . $row['Date'] . "</td></tr>";
+    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['value'] . "</td><td>" . $row['currency'] . "</td><td>" . $row['payer'] . "</td><td>" . $row['date'] . "</td></tr>";
 }
 ?>
                     </tbody>
