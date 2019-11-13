@@ -33,3 +33,7 @@ Route::get('/checkout', function () {
 Route::post('/checkout', function () {
     return view('checkout');
 });
+
+Route::post('/api/v1/paypal', function () {
+    return view('api.paypal');
+});
