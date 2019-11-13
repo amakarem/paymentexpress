@@ -1,7 +1,7 @@
 <?php
 
 $data = DB::table('paypal')->where('owner', Auth::user()->id)->get();
-$data = json_decode(json_encode($result), true);
+$data = json_decode(json_encode($data), true);
 $client_id = $data['paypal']['username'];
 $secret = $data['paypal']['password'];
 function token($client_id, $secret)
