@@ -1,12 +1,10 @@
-<pre>
 <?php
 
 $data = DB::table('paypal')->where('owner', Auth::user()->id)->get();
 $data = json_decode(json_encode($data), true);
-print_r($data);
-/*
-$client_id = $data['username'];
-$secret = $data['password'];
+
+$client_id = $data[0]['username'];
+$secret = $data[0]['password'];
 
 function token($client_id, $secret)
 {
@@ -113,4 +111,3 @@ print_r($transactions);
     </div>
 </div>
 @endsection
-*/
