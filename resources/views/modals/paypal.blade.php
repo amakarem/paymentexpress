@@ -3,9 +3,13 @@ $paypalsandbox = '';
 $paypalemail = '';
 $paypaldisabled = '';
 $paypalcallback = '';
+$paypalusername = '';
+$paypalpassword = '';
 if (isset($data['paypal'])) {
     $paypalemail = $data['paypal']['email'];
     $paypalcallback = $data['paypal']['callback'];
+    $paypalusername = $data['paypal']['username'];
+    $paypalpassword = $data['paypal']['password'];
     if ($data['paypal']['sandbox'] == 1) {
         $paypalsandbox = 'checked';
     }
@@ -32,6 +36,14 @@ if (isset($data['paypal'])) {
           <div class="form-group">
             <label for="callback">Callback URL:</label>
             <input type="url" class="form-control" id="callback" placeholder="Enter Callback URL" name="callback" value="{{$paypalcallback}}">
+          </div>
+          <div class="form-group">
+            <label for="username">Client ID:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter Client ID" name="username" value="{{$paypalusername}}">
+          </div>
+          <div class="form-group">
+            <label for="password">Secret:</label>
+            <input type="text" class="form-control" id="password" placeholder="Enter Secret" name="password" value="{{$paypalpassword}}">
           </div>
           <div class="checkbox">
             <label><input type="checkbox" {{$paypalsandbox}} name="sandbox"> Sandbox</label>
