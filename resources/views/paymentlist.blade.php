@@ -85,7 +85,7 @@ $token = token($client_id, $secret);
 $result = gettransactions($token,$start,$end);
 $transactions = array();
 foreach ($result as $value) {
-    if (!isset($value['transaction_info']['paypal_reference_id']) && isset($value['transaction_info'])) {
+    if (!isset($value['transaction_info']['paypal_reference_id']) && isset($value['payer_info']['email_address'])) {
         $payer = $value['payer_info']['email_address'];
         $value = $value['transaction_info'];
         $transactions[$value['transaction_id']]['id'] = $value['transaction_id'];
