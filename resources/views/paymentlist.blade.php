@@ -75,7 +75,7 @@ function gettransactions($token,$start,$end)
 
 $token = token($client_id, $secret);
 
-$result = gettransactions($token);
+$result = gettransactions($token,$start,$end);
 $transactions = array();
 foreach ($result as $value) {
     if (!isset($value['transaction_info']['paypal_reference_id'])) {
