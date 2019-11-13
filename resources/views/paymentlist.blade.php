@@ -98,7 +98,7 @@ foreach ($result as $value) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">PayPal Transactions list</div>
+                <div class="card-header">PayPal Transactions list from {{$start}} to {{$end}}</div>
 
                 <div class="card-body">
                     <table class="table table-hover">
