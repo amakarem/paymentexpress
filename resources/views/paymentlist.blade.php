@@ -5,7 +5,12 @@ $data = json_decode(json_encode($data), true);
 
 $client_id = $data[0]['username'];
 $secret = $data[0]['password'];
-
+$sandbox = $data[0]['sandbox'];
+global $system;
+$system = 'https://api.paypal.com/v1/';
+if ($sandbox == 1) {
+    $system = 'https://api.sandbox.paypal.com/v1/';
+}
 function token($client_id, $secret)
 {
     global $system;
@@ -61,8 +66,6 @@ function gettransactions($token)
 $token = token($client_id, $secret);
 
 $result = gettransactions($token);
-print_r($result);
-/*
 $transactions = array();
 foreach ($result as $value) {
     if (!isset($value['transaction_info']['paypal_reference_id'])) {
@@ -101,9 +104,9 @@ print_r($transactions);
                     </thead>
                     <tbody>
                     <?php
-        foreach ($transactions as $row) {
-            echo "<tr><td>".$row['id']."</td><td>".$row['value']."</td><td>".$row['Currency']."</td><td>".$row['payer']."</td><td>".$row['Date']."</td></tr>";
-        }
+foreach ($transactions as $row) {
+    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['value'] . "</td><td>" . $row['Currency'] . "</td><td>" . $row['payer'] . "</td><td>" . $row['Date'] . "</td></tr>";
+}
 ?>
                     </tbody>
                     </table>
@@ -113,4 +116,3 @@ print_r($transactions);
     </div>
 </div>
 @endsection
-*/
