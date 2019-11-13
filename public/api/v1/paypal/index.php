@@ -95,5 +95,6 @@ if (isset($_POST['client_id']) && isset($_POST['secret'])) {
     $transactions = json_encode($transactions);
     print_r($transactions);
 } else {
+    print_r($_POST);
     echo "Access denied";
 }
