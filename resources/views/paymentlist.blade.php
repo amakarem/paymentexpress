@@ -21,6 +21,8 @@ if(isset($_GET['end'])) {
 }
 $start = $start . '00:00:00-0000';
 $end = $end . '23:59:59-0000';
+echo $start;
+
 function token($client_id, $secret)
 {
     global $system;
@@ -69,7 +71,12 @@ function gettransactions($token,$start,$end)
     }
     curl_close($ch);
     $result = json_decode($result, true);
-    $result = $result['transaction_details'];
+    if(isset($result['transaction_details'])) {
+        $result = $result['transaction_details']; 
+    } else {
+        print_r($result);
+        $result = array();
+    }
     return $result;
 }
 
