@@ -2,10 +2,8 @@
 
 $data = DB::table('paypal')->where('owner', Auth::user()->id)->get();
 $data = json_decode(json_encode($data), true);
-print_r($data);
-/*
-$client_id = $data['paypal']['username'];
-$secret = $data['paypal']['password'];
+$client_id = $data['username'];
+$secret = $data['password'];
 
 function token($client_id, $secret)
 {
@@ -75,7 +73,7 @@ foreach ($result as $value) {
     }
 }
 print_r($transactions);
-*/
+
 ?>
 
 @extends('layouts.app')
@@ -85,31 +83,24 @@ print_r($transactions);
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Transactions list</div>
+                <div class="card-header">PayPal Transactions list</div>
 
                 <div class="card-body">
                     <table class="table table-hover">
                     <thead class="bg-light">
                     <tr>
-                    <th>ID</th>
-                    <th>OrderID</th>
-                    <th>Gateway</th>
                     <th>Transaction ID</th>
                     <th>Amount</th>
-                    <th>Status</th>
-                    <th>Details</th>
+                    <th>Currency</th>
+                    <th>Payer</th>
                     <th>Date time</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-    $result = DB::table('payment')->where('owner', Auth::user()->id)->get();
-    $result = json_decode(json_encode($result), true);
-    if (!empty($result)) {
-        foreach ($result as $row) {
-            echo "<tr><td>".$row['id']."</td><td>".$row['orderid']."</td><td>".$row['getway']."</td><td>".$row['txnid']."</td><td>".$row['amount']."</td><td>".$row['status']."</td><td>".$row['details']."</td><td>".$row['created_at']."</td></tr>";
+        foreach ($transactions as $row) {
+            echo "<tr><td>".$row['id']."</td><td>".$row['value']."</td><td>".$row['Currency']."</td><td>".$row['payer']."</td><td>".$row['Date']."</td></tr>";
         }
-    }
 ?>
                     </tbody>
                     </table>
