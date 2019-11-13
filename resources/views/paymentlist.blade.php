@@ -78,7 +78,6 @@ foreach ($result as $value) {
         $transactions[$value['transaction_id']]['payer'] = $payer;
     }
 }
-print_r($transactions);
 
 ?>
 
