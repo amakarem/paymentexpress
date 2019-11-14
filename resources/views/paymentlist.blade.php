@@ -84,7 +84,6 @@ $diff = date_diff($date1, $date2);
 $age = $diff->format("%a");
 
 $transactions = array();
-$error = '';
 if($age <= 31) {
     $token = token($client_id, $secret);
     $result = gettransactions($token,$start,$end);
@@ -111,7 +110,7 @@ if($age <= 31) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">PayPal Transactions list from {{$start}} to {{$end}} {{$error}})) ?</div>
+                <div class="card-header">PayPal Transactions list from {{$start}} to {{$end}} <?php if(isset($error)) { echo $error; } ?></div>
 
                 <div class="card-body">
                     <table class="table table-hover">
