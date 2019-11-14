@@ -99,7 +99,7 @@ if($age <= 31) {
         }
     }
 } else {
-    $error = '<span class="bg-danger text-white">Date range is greater than 31 days</span>';
+    $error = '<span class="bg-danger text-white"> Error: Date range is greater than 31 days. </span>';
 }
 ?>
 
