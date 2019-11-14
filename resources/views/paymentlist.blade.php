@@ -22,6 +22,13 @@ if(isset($_GET['end'])) {
 $start = $start . 'T00:00:00-0000';
 $end = $end . 'T23:59:59-0000';
 
+$date1 = date_create($start);
+$date2 = date_create($end);
+$diff = date_diff($date1, $date2);
+$age = $diff->format("%a");
+echo $age;
+
+
 function token($client_id, $secret)
 {
     global $system;
