@@ -54,6 +54,7 @@ function gettransactions($token, $start, $end)
     return $result;
 }
 
+$output = array();
 if (isset($_POST['client_id']) && isset($_POST['secret'])) {
     $client_id = $_POST['client_id'];
     $secret = $_POST['secret'];
@@ -76,25 +77,31 @@ if (isset($_POST['client_id']) && isset($_POST['secret'])) {
     if (isset($_POST['end'])) {
         $end = $_POST['end'];
     }
-
-    $token = token($client_id, $secret);
-
-    $result = gettransactions($token, $start, $end);
-    $transactions = array();
-    foreach ($result as $value) {
-        if (!isset($value['transaction_info']['paypal_reference_id']) && isset($value['payer_info']['email_address'])) {
-            $payer = $value['payer_info']['email_address'];
-            $value = $value['transaction_info'];
-            $transactions[$value['transaction_id']]['id'] = $value['transaction_id'];
-            $transactions[$value['transaction_id']]['date'] = $value['transaction_updated_date'];
-            $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
-            $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
-            $transactions[$value['transaction_id']]['payer'] = $payer;
+    $date1 = date_create($start);
+    $date2 = date_create($end);
+    $diff = date_diff($date1, $date2);
+    $age = $diff->format("%a");
+    if ($age <= 31) {
+        $token = token($client_id, $secret);
+        $result = gettransactions($token, $start, $end);
+        $transactions = array();
+        foreach ($result as $value) {
+            if (!isset($value['transaction_info']['paypal_reference_id']) && isset($value['payer_info']['email_address'])) {
+                $payer = $value['payer_info']['email_address'];
+                $value = $value['transaction_info'];
+                $transactions[$value['transaction_id']]['id'] = $value['transaction_id'];
+                $transactions[$value['transaction_id']]['date'] = $value['transaction_updated_date'];
+                $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
+                $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
+                $transactions[$value['transaction_id']]['payer'] = $payer;
+            }
         }
+        $output = $transactions;
+    } else {
+        $output['error'] = 'Date range is greater than 31 days';
     }
-    $transactions = json_encode($transactions);
-    print_r($transactions);
 } else {
-    print_r($_POST);
-    echo "Access denied";
+    $output['error'] = "Access denied";
 }
+$output = json_encode($output);
+print_r($output);

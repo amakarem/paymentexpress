@@ -67,8 +67,8 @@ $system = 'https://api.paypal.com/v1/';
 if ($sandbox == 1) {
     $system = 'https://api.sandbox.paypal.com/v1/';
 }
-$start = date("Y-m-d",strtotime("-1 month"));
-$end = date("Y-m-d");
+$from = date("Y-m-d",strtotime("-1 month"));
+$to = date("Y-m-d");
 if(isset($_GET['start'])) {
     $from = $_GET['start'];
 }
