@@ -115,10 +115,9 @@ if($age <= 31) {
 
                 <div class="card-body">
                 <form method="get" action="">
-    <input type="date" name="start" value="{{$from}}">
-    <input type="date" name="end" value="{{$to}}">
-    <input type="submit" value="Search">
-</form>
+                    FROM <input type="date" name="start" value="{{$from}}"> To <input type="date" name="end" value="{{$to}}">
+                    <input type="submit" value="Search">
+                </form>
                     <table class="table table-hover">
                     <thead class="bg-light">
                     <tr>
