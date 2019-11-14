@@ -113,6 +113,11 @@ if($age <= 31) {
                 <div class="card-header">PayPal Transactions list from {{$start}} to {{$end}} <?php if(isset($error)) { echo $error; } ?></div>
 
                 <div class="card-body">
+                <form method="get" action="">
+    <input type="date" name="start" value="{{$start}}">
+    <input type="date" name="end" value="{{$end}}">
+    <input type="submit" value="submit">
+</form>
                     <table class="table table-hover">
                     <thead class="bg-light">
                     <tr>
