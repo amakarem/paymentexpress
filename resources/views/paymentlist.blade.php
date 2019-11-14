@@ -70,16 +70,17 @@ if ($sandbox == 1) {
 $start = date("Y-m-d",strtotime("-1 month"));
 $end = date("Y-m-d");
 if(isset($_GET['start'])) {
-    $start = $_GET['start'];
+    $from = $_GET['start'];
 }
 if(isset($_GET['end'])) {
-    $end = $_GET['end'];
+    $to = $_GET['end'];
 }
-$start = $start . 'T00:00:00-0000';
-$end = $end . 'T23:59:59-0000';
 
-$date1 = date_create($start);
-$date2 = date_create($end);
+$start = $from . 'T00:00:00-0000';
+$end = $to . 'T23:59:59-0000';
+
+$date1 = date_create($from);
+$date2 = date_create($to);
 $diff = date_diff($date1, $date2);
 $age = $diff->format("%a");
 
@@ -110,13 +111,13 @@ if($age <= 31) {
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">PayPal Transactions list from {{$start}} to {{$end}} <?php if(isset($error)) { echo $error; } ?></div>
+                <div class="card-header">PayPal Transactions list from {{$from}} to {{$to}} <?php if(isset($error)) { echo $error; } ?></div>
 
                 <div class="card-body">
                 <form method="get" action="">
-    <input type="date" name="start" value="{{$start}}">
-    <input type="date" name="end" value="{{$end}}">
-    <input type="submit" value="submit">
+    <input type="date" name="start" value="{{$from}}">
+    <input type="date" name="end" value="{{$to}}">
+    <input type="submit" value="Search">
 </form>
                     <table class="table table-hover">
                     <thead class="bg-light">
