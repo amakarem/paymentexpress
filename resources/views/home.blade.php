@@ -19,6 +19,7 @@
                     <pre>
                     <?php
 $paymentkey = Auth::user()->paymentkey;
+$appurl = env("APP_URL");
 if ($paymentkey == '' || $paymentkey == '0') {
     echo "<br><b>You don't have Payment Key </b>";
     echo '<a class="btn btn-success" href="' . route('generatepaymentkey') . '">Generate Payment Key</a>';
@@ -27,7 +28,7 @@ if ($paymentkey == '' || $paymentkey == '0') {
     echo "<hr><b>Here is your simple HTML code for integration</b><br>";
     echo '
 <textarea rows="8" cols="100" name="code">
-<form method="GET" action="' . env("APP_URL") . '/checkout">
+<form method="GET" action="' . $appurl . '/checkout">
     <input type="hidden" name="account" value="' . $paymentkey . '">
     <input type="hidden" name="id" value="2">
     <input type="text" name="details" value="details for the order">
