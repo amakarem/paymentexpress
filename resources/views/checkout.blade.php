@@ -29,7 +29,7 @@ if (isset($order['account']) && isset($order['id']) && isset($order['details']) 
                 $paypalmethod = array(
                     'business' => $paypal[0]['email'],
                     'cmd' => '_xclick',
-                    'notify_url' => '',
+                    'notify_url' => $paypal[0]['callback'],
                     'item_name' => $order['details'],
                     'bn' => $order['id'],
                     'amount' => $order['amount'],
