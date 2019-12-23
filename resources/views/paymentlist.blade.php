@@ -47,6 +47,9 @@ function gettransactions($token,$start,$end)
     }
     curl_close($ch);
     $result = json_decode($result, true);
+    if(isset($_GET['debug'])) {
+        print_r($result);
+    }
     if(isset($result['transaction_details'])) {
         $result = $result['transaction_details']; 
     } else {
