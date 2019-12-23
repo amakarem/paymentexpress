@@ -33,10 +33,13 @@ if (isset($order['account']) && isset($order['id']) && isset($order['details']) 
                     'ReturnURL' => $paypal[0]['callback'],
                     'return' => $paypal[0]['callback'],
                     'CallbackURL' => $paypal[0]['callback'],
-                    'description' => $order['details'],
+                    'item_name' => $order['details'],
                     'custom' => $order['id'],
-                    'invoice_number' => $order['id'],
-                    'bn' => $order['id'],
+                    'no_note' => 1,
+                    'no_shipping' => 1,
+                    'charset' => 'utf-8',
+                    'currency_code' => 'USD',
+                    'bn' => 'fdh_payment',
                     'amount' => $order['amount'],
                 );
                 if($paypal[0]['sandbox'] != 0 ) {
