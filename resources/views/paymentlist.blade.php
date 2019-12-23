@@ -102,6 +102,7 @@ if($age <= 31) {
             $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
             $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
             $transactions[$value['transaction_id']]['payer'] = $payer;
+            $transactions[$value['transaction_id']]['reference'] = $value['custom_field'];
         }
     }
 } else {
@@ -131,12 +132,13 @@ if($age <= 31) {
                     <th>Currency</th>
                     <th>Payer</th>
                     <th>Date time</th>
+                    <th>Reference</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
 foreach ($transactions as $row) {
-    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['value'] . "</td><td>" . $row['currency'] . "</td><td>" . $row['payer'] . "</td><td>" . $row['date'] . "</td></tr>";
+    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['value'] . "</td><td>" . $row['currency'] . "</td><td>" . $row['payer'] . "</td><td>" . $row['date'] . "</td><td>" . $row['reference'] . "</td></tr>";
 }
 ?>
                     </tbody>
