@@ -33,7 +33,7 @@ if (isset($order['account']) && isset($order['id']) && isset($order['details']) 
                     'ReturnURL' => $paypal[0]['callback'],
                     'return' => $paypal[0]['callback'],
                     'CallbackURL' => $paypal[0]['callback'],
-                    'item_name' => $order['details'],
+                    'item_name' => $order['details'] . ' ID ' . $order['id'],
                     'custom' => $order['id'],
                     'no_note' => 1,
                     'no_shipping' => 1,
