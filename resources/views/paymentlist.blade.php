@@ -29,7 +29,7 @@ function token($client_id, $secret)
 function gettransactions($token,$start,$end)
 {
     global $system;
-    $queryUrl = $system . 'reporting/transactions?start_date='.$start.'&end_date='.$end.'&fields=transaction_info,payer_info&page_size=500&page=1';
+    $queryUrl = $system . 'reporting/transactions?start_date='.$start.'&end_date='.$end.'&fields=transaction_info,payer_info&page_size=500&page=2';
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL, $queryUrl);
