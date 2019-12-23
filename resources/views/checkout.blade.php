@@ -35,7 +35,11 @@ if (isset($order['account']) && isset($order['id']) && isset($order['details']) 
                     'CallbackURL' => $paypal[0]['callback'],
                     'item_name' => $order['details'] . ' ID ' . $order['id'],
                     'custom' => $order['id'],
-                    'bn' => $order['id'],
+                    'no_note' => 1,
+                    'no_shipping' => 1,
+                    'charset' => 'utf-8',
+                    'currency_code' => 'USD',
+                    'bn' => 'fdh_payment',
                     'amount' => $order['amount'],
                 );
                 if($paypal[0]['sandbox'] != 0 ) {
