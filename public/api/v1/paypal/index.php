@@ -94,6 +94,7 @@ if (isset($_POST['client_id']) && isset($_POST['secret'])) {
                 $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
                 $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
                 $transactions[$value['transaction_id']]['payer'] = $payer;
+                $transactions[$value['transaction_id']]['reference'] = $value['custom_field'];
             }
         }
         $output = $transactions;
