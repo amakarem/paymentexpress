@@ -102,7 +102,11 @@ if($age <= 31) {
             $transactions[$value['transaction_id']]['currency'] = $value['transaction_amount']['currency_code'];
             $transactions[$value['transaction_id']]['value'] = $value['transaction_amount']['value'];
             $transactions[$value['transaction_id']]['payer'] = $payer;
-            $transactions[$value['transaction_id']]['reference'] = $value['custom_field'];
+            if (isset($value['custom_field'])) {
+                $transactions[$value['transaction_id']]['reference'] = $value['custom_field'];
+            } else {
+                $transactions[$value['transaction_id']]['reference'] = '';
+            }
         }
     }
 } else {
